@@ -17,7 +17,14 @@ We recommend using the `Data::Dumper` package if you wish to
 pretty-print the API responses.  The `utf8` package is also required to
 properly resolve foreign characters.
 
-Add installation text here.
+To install the package, download the current zipped version of the source code
+from GitHub, unzip the file and run the following commands from the console:
+
+    $ perl Makefile.PL
+    $ make
+    $ make install
+    
+(You may have to run `make install` as sudo or administrator.)
 
 We'll submit this package to CPAN so that you can download it from there in
 the near future.
