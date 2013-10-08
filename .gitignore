@@ -1,0 +1,4 @@
+.env
+.perl-version
+*.pl
+Soccermetrics-API-Client/
