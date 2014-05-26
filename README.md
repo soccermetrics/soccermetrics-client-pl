@@ -23,7 +23,7 @@ from GitHub, unzip the file and run the following commands from the console:
     $ perl Makefile.PL
     $ make
     $ make install
-    
+
 (You may have to run `make install` as sudo or administrator.)
 
 We'll submit this package to CPAN so that you can download it from there in
@@ -107,17 +107,17 @@ my $var = $client->get('matches/info',
     ('home_team_name' => "Everton", 'away_team_name' => "Liverpool"));
 
 foreach my $rec (@{$var->{data}}) {
-    print "Matchday $rec->{matchday}: $rec->{match_date} at $rec->{kickoff_time}\n";
+    print "Matchday $rec->{matchday}: $rec->{matchDate} at $rec->{kickoffTime}\n";
     my $lineup = $client->uri($rec->{link}->{lineups},
         ('is_starting' => 1,'sort' => 'player_team_name,position'));
     my $progress = 1;
     while ($progress) {
         foreach my $lrec (@{$lineup->{data}}) {
-            my $player_name = $lrec->{player_name};
+            my $player_name = $lrec->{playerName};
             utf8::encode($player_name);
-            print "$player_name - $lrec->{player_team_name} ($lrec->{position_name})\n";
+            print "$player_name - $lrec->{playerTeamName} ($lrec->{positionName})\n";
         }
-        if($lineup->{meta}[0]->{page} == $lineup->{meta}[0]->{total_pages}) {
+        if($lineup->{meta}[0]->{page} == $lineup->{meta}[0]->{totalPages}) {
             $progress = 0;
         }
         else {
@@ -143,8 +143,8 @@ my $resp = $client->get('personnel/players', ('full_name' => 'Robin van Persie')
 my $goals = $client->uri($resp->{data}[0]->{link}->{events}->{goals});
 my $penalties = $client->uri($resp->{data}[0]->{link}->{events}->{penalties}, ('outcome_type' => 'Goal'));
 
-my $total_goals = $goals->{meta}[0]->{total_records} + $penalties->{meta}[0]->{total_records};
-my $player_name = $resp->{data}[0]->{full_name};
+my $total_goals = $goals->{meta}[0]->{totalRecords} + $penalties->{meta}[0]->{totalRecords};
+my $player_name = $resp->{data}[0]->{fullName};
 utf8::encode($player_name);
 print "Total goals by $player_name: $total_goals\n";
 ```
