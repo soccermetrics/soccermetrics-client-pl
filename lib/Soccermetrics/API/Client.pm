@@ -11,7 +11,7 @@ use URI::Escape 'uri_escape';
 our $VERSION = '0.5';
 our $Debug = 0;
 
-sub API_URL  { 'http://api-summary.soccermetrics.net' };
+sub API_URL  { 'https://api-summary.soccermetrics.net' };
 sub API_VERSION { 'v0' };
 
 my %app_id = ();
